@@ -361,19 +361,19 @@ np.unique(y_train, return_counts=True)
 
 # # 6. Applying Machine Learning Algorithms
 
-# In[39]:
+# In[68]:
 
 
 from sklearn.metrics import r2_score, mean_absolute_error
 from sklearn.metrics import mean_squared_error
 from sklearn.metrics import confusion_matrix
-
+from sklearn.metrics import f1_score
 from math import sqrt
 
 
 # ### 6.0 Naive Bayes
 
-# In[40]:
+# In[69]:
 
 
 # Gaussian Naive Bayes
@@ -400,8 +400,11 @@ print('RMSE  : %f' % RMSE)
 R2_SCORE=r2_score(y_test, y_pred)
 print('R2_SCORE  : %f' % R2_SCORE)
 
+F1_SCORE = f1_score(y_test, y_pred, average='macro')
+print('F1_SCORE  : %f' % F1_SCORE)
 
-# In[41]:
+
+# In[56]:
 
 
 # BernoulliNB Naive Bayes
@@ -428,10 +431,13 @@ print('RMSE  : %f' % RMSE)
 R2_SCORE=r2_score(y_test, y_pred)
 print('R2_SCORE  : %f' % R2_SCORE)
 
+F1_SCORE = f1_score(y_test, y_pred, average='macro')
+print('F1_SCORE  : %f' % F1_SCORE)
+
 
 # ### 6.1 LOGISTIC REGRESSION
 
-# In[42]:
+# In[34]:
 
 
 from sklearn.linear_model import LogisticRegression
@@ -456,7 +462,7 @@ print("C = {} ,  Accuracy = {}".format(maxc, highAcc))
    
 
 
-# In[43]:
+# In[72]:
 
 
 
@@ -486,10 +492,13 @@ print('RMSE  : %f' % RMSE)
 R2_SCORE=r2_score(y_test, y_pred)
 print('R2_SCORE  : %f' % R2_SCORE)
 
+F1_SCORE = f1_score(y_test, y_pred, average='macro')
+print('F1_SCORE  : %f' % F1_SCORE)
+
 
 # ### 6.2 KNN CLASSIFIER 
 
-# In[44]:
+# In[36]:
 
 
 from sklearn.neighbors import KNeighborsClassifier
@@ -513,7 +522,7 @@ for n in range(5,20):
 print('n = {} , MaxAccuracy = {}'.format(maxn, highAcc ))
 
 
-# In[45]:
+# In[58]:
 
 
 print('KNeighborsClassifier')
@@ -542,10 +551,13 @@ print('RMSE  : %f' % RMSE)
 R2_SCORE=r2_score(y_test, y_pred)
 print('R2_SCORE  : %f' % R2_SCORE)
 
+F1_SCORE = f1_score(y_test, y_pred, average='macro')
+print('F1_SCORE  : %f' % F1_SCORE)
+
 
 # ### 6.3 Support Vector Classification
 
-# In[46]:
+# In[38]:
 
 
 #SVC, NuSVC and LinearSVC are classes capable of performing binary and multi-class classification on a dataset. 
@@ -554,7 +566,7 @@ print('R2_SCORE  : %f' % R2_SCORE)
 from sklearn import svm
 
 
-# In[47]:
+# In[39]:
 
 
 print('SUPPORT VECTOR CLASSIFICATION ')
@@ -584,7 +596,7 @@ for k in kernal:
     #print('------------------------------')
 
 
-# In[48]:
+# In[59]:
 
 
 print('Linear SVC')
@@ -613,8 +625,11 @@ print('RMSE  : %f' % RMSE)
 R2_SCORE=r2_score(y_test, y_pred)
 print('R2_SCORE  : %f' % R2_SCORE)
 
+F1_SCORE = f1_score(y_test, y_pred, average='macro')
+print('F1_SCORE  : %f' % F1_SCORE)
 
-# In[49]:
+
+# In[60]:
 
 
 print('Radial Basis Function - SVC')
@@ -643,8 +658,11 @@ print('RMSE  : %f' % RMSE)
 R2_SCORE=r2_score(y_test, y_pred)
 print('R2_SCORE  : %f' % R2_SCORE)
 
+F1_SCORE = f1_score(y_test, y_pred, average='macro')
+print('F1_SCORE  : %f' % F1_SCORE)
 
-# In[50]:
+
+# In[61]:
 
 
 # polynomial kernel function 
@@ -671,8 +689,11 @@ print('RMSE  : %f' % RMSE)
 R2_SCORE=r2_score(y_test, y_pred)
 print('R2_SCORE  : %f' % R2_SCORE)
 
+F1_SCORE = f1_score(y_test, y_pred, average='macro')
+print('F1_SCORE  : %f' % F1_SCORE)
 
-# In[51]:
+
+# In[62]:
 
 
 #Sigmoid
@@ -699,8 +720,11 @@ print('RMSE  : %f' % RMSE)
 R2_SCORE=r2_score(y_test, y_pred)
 print('R2_SCORE  : %f' % R2_SCORE)
 
+F1_SCORE = f1_score(y_test, y_pred, average='macro')
+print('F1_SCORE  : %f' % F1_SCORE)
 
-# In[52]:
+
+# In[44]:
 
 
 # To ignore warnings thrown by dataprep library 
@@ -716,7 +740,7 @@ final_report = create_report(dataset, title='Final Dataset')
 final_report
 
 
-# In[53]:
+# In[45]:
 
 
 #OBSERVATIONS:
@@ -728,16 +752,21 @@ final_report
 #4. Higher Milk consumption shows higher longevity 
 
 
-# In[ ]:
+# In[46]:
 
 
-# MODEL                      Accuracy       MAE     MSE      RMSE      R2_Score
-# Gaussian Naive Bayes         31%          1.63    5.96   2.440956    0.938516
-# Bernoulli Naive Bayes        22%          2.95    23.42  4.839478    0.758323
-# Logistic Regression          38%          1.16    3.83   1.958232    0.96043
-# KNN Classifier               85%          0.17    0.21   0.458555    0.99783
-# Linear SVC                   68%          0.4     0.58   0.763325    0.993987
-# Radial Basis Function SVC    82%          0.21    0.29   0.541978    0.996969
-# Polynomial SVC               79%          0.21    0.29   0.541978    0.996969
-# Sigmoid SVC                  29%          0.21    0.29   0.541978    0.996969
+# MODEL                      Accuracy       MAE     MSE      RMSE      R2_Score    F1_SCORE
+# Gaussian Naive Bayes         31%          1.63    5.96   2.440956    0.938516    0.249275
+# Bernoulli Naive Bayes        22%          2.95    23.42  4.839478    0.758323    0.153571
+# Logistic Regression          38%          1.16    3.83   1.958232    0.96043     0.340216
+# KNN Classifier               85%          0.17    0.21   0.458555    0.99783     0.892837
+# Linear SVC                   68%          0.4     0.58   0.763325    0.993987    0.703947
+# Radial Basis Function SVC    82%          0.21    0.29   0.541978    0.996969    0.812503
+# Polynomial SVC               79%          0.21    0.29   0.541978    0.996969    0.812503
+# Sigmoid SVC                  29%          0.21    0.29   0.541978    0.996969    0.812503
+
+
+
+# prefer Knn because of higher F1score , lower rmse , higher r2 score . 
+# Though accuracy is not a measure to choose right model. KNN stands to be the best model for the current dataset.
 
