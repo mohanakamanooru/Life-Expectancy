@@ -728,92 +728,16 @@ final_report
 #4. Higher Milk consumption shows higher longevity 
 
 
-# ## Diet (Protien Consumption)
-
-# In[31]:
+# In[ ]:
 
 
-from sklearn.cluster import KMeans
-import numpy as np
-
-plt.rcParams["figure.figsize"] = (15,5)
-kmeans = KMeans(n_clusters=1).fit(dataset)
-#centroids = kmeans.cluster_centers_
-
-plt.scatter(dataset['Life expectancy'],dataset['Eggs Consumption'],  c= kmeans.labels_.astype(float), s=50, alpha=0.5)
-#plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=100)
-
-plt.xlabel('Life expectancy')
-plt.ylabel('Eggs Consumption')
-plt.show()
-
-
-# In[32]:
-
-
-# visualising the countries consuming Egg comparitively much higher than other countries
-
-raw_dataset[raw_dataset['Eggs Consumption']>18]['Country'].unique()
-
-
-# In[33]:
-
-
-kmeans = KMeans(n_clusters=1).fit(dataset)
-#centroids = kmeans.cluster_centers_
-
-plt.scatter(dataset['Life expectancy'],dataset['Milk Consumption'],  c= kmeans.labels_.astype(float), s=50, alpha=0.5)
-#plt.scatter(centroids[:, 0], centroids[:, 1], c='red', s=100)
-plt.xlabel('Life expectancy')
-plt.ylabel('Milk Consumption')
-plt.show()
-
-
-# In[34]:
-
-
-# visualising the countries consuming Egg comparitively much higher than other countries
-
-raw_dataset[raw_dataset['Milk Consumption']>350]['Country'].unique()
-
-
-# In[35]:
-
-
-kmeans = KMeans(n_clusters=1).fit(dataset)
-
-plt.scatter( dataset['Life expectancy'], dataset['Bovine Meat'],c= kmeans.labels_.astype(float), s=50, alpha=0.5)
-plt.xlabel('Life expectancy')
-plt.ylabel('Bovine Meat')
-
-plt.show()
-
-
-# In[36]:
-
-
-# visualising the countries consuming Beef comparitively much higher than other countries
-
-raw_dataset[raw_dataset['Bovine Meat']>40]['Country'].unique()
-
-
-# In[37]:
-
-
-
-kmeans = KMeans(n_clusters=10).fit(dataset)
-plt.scatter( dataset['Life expectancy'], dataset['Fish and Seafood'],c= kmeans.labels_.astype(float), s=50, alpha=0.5)
-
-plt.xlabel('Life expectancy')
-plt.ylabel('Fish and Seafood')
-
-plt.show()
-
-
-# In[38]:
-
-
-# visualising the countries consuming fish and sea food comparitively much higher than other countries
-
-raw_dataset[raw_dataset['Fish and Seafood']>75]['Country'].unique()
+# MODEL                      Accuracy       MAE     MSE      RMSE      R2_Score
+# Gaussian Naive Bayes         31%          1.63    5.96   2.440956    0.938516
+# Bernoulli Naive Bayes        22%          2.95    23.42  4.839478    0.758323
+# Logistic Regression          38%          1.16    3.83   1.958232    0.96043
+# KNN Classifier               85%          0.17    0.21   0.458555    0.99783
+# Linear SVC                   68%          0.4     0.58   0.763325    0.993987
+# Radial Basis Function SVC    82%          0.21    0.29   0.541978    0.996969
+# Polynomial SVC               79%          0.21    0.29   0.541978    0.996969
+# Sigmoid SVC                  29%          0.21    0.29   0.541978    0.996969
 
